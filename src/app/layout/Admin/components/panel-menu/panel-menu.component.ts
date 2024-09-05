@@ -1,6 +1,6 @@
 import { NgFor } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 
 import { MenuItem } from 'primeng/api';
@@ -8,28 +8,31 @@ import { MenuModule } from 'primeng/menu';
 import { BadgeModule } from 'primeng/badge';
 import { RippleModule } from 'primeng/ripple';
 import { AvatarModule } from 'primeng/avatar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panel-menu',
   standalone: true,
   imports: [
+    CommonModule,
+
     ButtonModule,
     NgFor,
     MenuModule,
     BadgeModule,
     RippleModule,
-    AvatarModule,
+    AvatarModule
   ],
   templateUrl: './panel-menu.component.html',
   styleUrl: './panel-menu.component.scss',
 })
 export class PanelMenuComponent {
-  // constructor(private router: Router) {}
+  constructor(private router: Router) {}
 
   items: MenuItem[] | undefined;
 
-  routeToPage() {
-    console.log('NGU');
+  handleRouter(url: any) {
+    this.router.navigate([`${url}`]);
   }
 
   ngOnInit() {
@@ -38,40 +41,43 @@ export class PanelMenuComponent {
         separator: true,
       },
       {
+        label: 'Thống kê',
+        items: [
+          {
+            label: 'Biểu đồ',
+            url: '',
+            icon: 'pi pi-align-center',
+          },
+          {
+            label: 'Doanh thu',
+            url: '/revenue',
+            icon: 'pi pi-list',
+          }
+        ],
+      },
+      {
+        separator: true,
+      },
+      {
         label: 'Quản lý',
         items: [
           {
             label: 'Thương hiệu',
+            url: '/brand',
             icon: 'pi pi-align-center',
-            // shortcut: '⌘+N',
           },
           {
             label: 'Danh mục',
+            url: '/category',
             icon: 'pi pi-list',
-            // shortcut: '⌘+S',
+          },
+          {
+            label: 'Sản phẩm',
+            url: '/product',
+            icon: 'pi pi-box',
           },
         ],
       },
-      // {
-      //     label: 'Profile',
-      //     items: [
-      //         {
-      //             label: 'Settings',
-      //             icon: 'pi pi-cog',
-      //             shortcut: '⌘+O'
-      //         },
-      //         {
-      //             label: 'Messages',
-      //             icon: 'pi pi-inbox',
-      //             badge: '2'
-      //         },
-      //         {
-      //             label: 'Logout',
-      //             icon: 'pi pi-sign-out',
-      //             shortcut: '⌘+Q'
-      //         }
-      //     ]
-      // },
       {
         separator: true,
       },

@@ -16,7 +16,7 @@ import { CardModule } from 'primeng/card';
 import { PanelMenuComponent } from '../components/panel-menu/panel-menu.component';
 
 @Component({
-  selector: 'app-brand',
+  selector: 'app-category',
   standalone: true,
   imports: [
     ButtonModule,
@@ -32,13 +32,13 @@ import { PanelMenuComponent } from '../components/panel-menu/panel-menu.componen
 
     PanelMenuComponent,
   ],
-  templateUrl: './brand.component.html',
-  styleUrl: './brand.component.scss',
+  templateUrl: './category.component.html',
+  styleUrl: './category.component.scss'
 })
-export class BrandComponent {
+export class CategoryComponent {
   constructor(private router: Router) {}
 
-  title: any = 'brand';
+  title: any = 'category';
   value: string | undefined;
 
   // routeToBrand() {
@@ -50,7 +50,7 @@ export class BrandComponent {
   ngOnInit() {
     this.items = [
       { label: 'Quản lý' },
-      { label: 'Thương hiệu' }
+      { label: 'Danh mục' }
     ];
 
     this.home = { icon: 'pi pi-home', routerLink: '/' };

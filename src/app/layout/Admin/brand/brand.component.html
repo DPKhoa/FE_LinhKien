@@ -1,6 +1,55 @@
-<div class="w-full flex flex-row h-screen gap-2">
-  <div class="w-2 h-full">
-    <app-panel-menu></app-panel-menu>
+<div class="w-full flex flex-row h-screen gap-3">
+  <app-panel-menu></app-panel-menu>
+
+  <div class="flex flex-column w-full h-screen">
+    <div class="flex flex-row align-items-center justify-content-end w-full h-4rem gap-3">
+      <div class="flex w-15rem h-2rem justify-content-center">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+              <i class="pi pi-search"></i>
+          </p-inputGroupAddon>
+          <input pInputText placeholder="Tìm kiếm" />
+        </p-inputGroup>
+      </div>
+  
+      <div class="flex w-2rem h-2rem">
+        <p-avatar 
+          image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" 
+          styleClass="w-full h-full" 
+          size="xlarge" 
+          shape="circle" />
+      </div>
+  
+      <i class="pi pi-cog" style="font-size: 1.5rem"></i>
+    </div>
+
+    <div class="w-full h-full flex flex-column align-items-start">
+      <p-breadcrumb 
+        class="w-full" 
+        [model]="items" 
+        [home]="home" />
+        
+      <div class="card flex flex-row w-full h-fit align-items-start justify-content-between py-3">
+        <div class="flex flex-row w-fit h-fit align-items-start gap-3">
+          <button pButton pRipple size="small" [disabled]="false" 
+            icon="pi pi-plus" label="Tạo mới" class="p-button-success gap-2">
+          </button>
+          <button pButton pRipple size="small" [disabled]="true" 
+            icon="pi pi-trash" label="Xóa" class="p-button-danger gap-2">
+          </button>
+        </div>
+
+        <div class="flex w-18rem h-2rem justify-content-center">
+          <p-inputGroup>
+            <p-inputGroupAddon>
+                <i class="pi pi-search"></i>
+            </p-inputGroupAddon>
+            <input pInputText placeholder="Tìm kiếm thương hiệu..." />
+          </p-inputGroup>
+        </div>
+      </div>
+
+      TABLE
+    </div>
   </div>
-  <div class="w-10 bg-yellow-100 h-full">Brand</div>
 </div>

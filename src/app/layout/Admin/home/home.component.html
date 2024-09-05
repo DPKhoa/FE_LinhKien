@@ -1,7 +1,33 @@
 <div class="w-full flex flex-row h-screen gap-3">
-  <div
-    class="w-2 bg-green-100 h-full flex flex-column align-items-center gap-2 p-2"
-  >
-    <app-panel-menu></app-panel-menu>
+  <app-panel-menu></app-panel-menu>
+
+  <div class="flex flex-column w-full h-screen">
+    <div class="flex flex-row align-items-center justify-content-end w-full h-4rem gap-3">
+      <div class="flex w-15rem h-2rem justify-content-center">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+              <i class="pi pi-search"></i>
+          </p-inputGroupAddon>
+          <input pInputText placeholder="Tìm kiếm" />
+        </p-inputGroup>
+      </div>
+  
+      <div class="flex w-2rem h-2rem">
+        <p-avatar 
+          image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" 
+          styleClass="w-full h-full" 
+          size="xlarge" 
+          shape="circle" />
+      </div>
+  
+      <i class="pi pi-cog" style="font-size: 1.5rem"></i>
+    </div>
+
+    <div class="w-full h-full flex flex-column align-items-start">
+      <p-breadcrumb 
+        class="w-full" 
+        [model]="items" 
+        [home]="home" />
+    </div>
   </div>
 </div>

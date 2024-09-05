@@ -31,7 +31,7 @@
                 <path d="..." fill="var(--primary-color-text)" />
             </svg>
             <span class="font-medium text-base font-semibold">
-                ĐIỆN MÁY<span class="text-primary">TRUNG TÍN</span>
+                ĐIỆN MÁY<span class="text-primary"> TRUNG TÍN</span>
             </span>
         </span>
     </ng-template>
@@ -39,7 +39,7 @@
         <span class="text-primary font-bold">{{ item.label }}</span>
     </ng-template>
     <ng-template pTemplate="item" let-item>
-        <a pRipple class="flex align-items-center p-menuitem-link">
+        <a pRipple class="flex align-items-center p-menuitem-link" [href]="item.url">
             <span [class]="item.icon"></span>
             <span class="ml-2">{{ item.label }}</span>
             <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
@@ -52,7 +52,7 @@
         <button pRipple class="relative overflow-hidden w-full p-link flex align-items-center p-2 pl-3 text-color hover:surface-200 border-noround">
             <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-2" shape="circle" />
             <span class="inline-flex flex-column">
-                <span class="font-bold">ADMIN</span>
+                <span class="font-bold">Tu3tle</span>
                 <span class="text-sm">Admin</span>
             </span>
         </button>
