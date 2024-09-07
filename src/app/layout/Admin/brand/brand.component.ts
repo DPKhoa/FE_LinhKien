@@ -12,8 +12,10 @@ import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
 
 import { PanelMenuComponent } from '../components/panel-menu/panel-menu.component';
+import { BrandService } from '../../../../service/brand.service';
 
 @Component({
   selector: 'app-brand',
@@ -29,6 +31,7 @@ import { PanelMenuComponent } from '../components/panel-menu/panel-menu.componen
     AvatarGroupModule,
     BreadcrumbModule,
     CardModule,
+    TableModule,
 
     PanelMenuComponent,
   ],
@@ -36,7 +39,10 @@ import { PanelMenuComponent } from '../components/panel-menu/panel-menu.componen
   styleUrl: './brand.component.scss',
 })
 export class BrandComponent {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private _service: BrandService
+  ) {}
 
   title: any = 'brand';
   value: string | undefined;
@@ -54,5 +60,14 @@ export class BrandComponent {
     ];
 
     this.home = { icon: 'pi pi-home', routerLink: '/' };
+    this.loadData();
+  }
+
+  products: any;
+  loadData() {
+    this._service.getAllBrand().subscribe((data: any) => {
+      console.log(data.data)
+      this.products = data.data;
+    })
   }
 }

@@ -39,14 +39,14 @@
         <span class="text-primary font-bold">{{ item.label }}</span>
     </ng-template>
     <ng-template pTemplate="item" let-item>
-        <a pRipple class="flex align-items-center p-menuitem-link" [href]="item.url">
+        <div pRipple class="flex align-items-center p-menuitem-link" (click)="handleRouter(item.url)">
             <span [class]="item.icon"></span>
             <span class="ml-2">{{ item.label }}</span>
             <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
             <span *ngIf="item.shortcut" class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">
                 {{ item.shortcut }}
             </span>
-        </a>
+        </div>
     </ng-template>
     <ng-template pTemplate="end">
         <button pRipple class="relative overflow-hidden w-full p-link flex align-items-center p-2 pl-3 text-color hover:surface-200 border-noround">

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { MenuItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -12,13 +13,18 @@ import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
+import { DialogModule } from 'primeng/dialog';
 
 import { PanelMenuComponent } from '../components/panel-menu/panel-menu.component';
+import { CatogoryService } from '../../../../service/category.service';
 
 @Component({
   selector: 'app-category',
   standalone: true,
   imports: [
+    CommonModule,
+
     ButtonModule,
     InputTextModule,
     FormsModule,
@@ -29,6 +35,8 @@ import { PanelMenuComponent } from '../components/panel-menu/panel-menu.componen
     AvatarGroupModule,
     BreadcrumbModule,
     CardModule,
+    TableModule,
+    DialogModule,
 
     PanelMenuComponent,
   ],
@@ -36,14 +44,17 @@ import { PanelMenuComponent } from '../components/panel-menu/panel-menu.componen
   styleUrl: './category.component.scss'
 })
 export class CategoryComponent {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private _service: CatogoryService
+  ) {}
 
   title: any = 'category';
   value: string | undefined;
 
-  // routeToBrand() {
-  //   this.router.navigate([`brand`]);
-  // }
+  routeToBrand() {
+    this.router.navigate([`brand`]);
+  }
 
   items: MenuItem[] | undefined;
   home: MenuItem | undefined;
@@ -54,5 +65,20 @@ export class CategoryComponent {
     ];
 
     this.home = { icon: 'pi pi-home', routerLink: '/' };
+    this.loadData();
+  }
+
+  categories: any;
+  loadData() {
+    this._service.getAllCategory().subscribe((data: any) => {
+      this.categories = data.data;
+      console.log(this.categories)
+    })
+  }
+
+  visible: boolean = false;
+  popUp() {
+    console.log('Ngu')
+    this.visible = true;
   }
 }
