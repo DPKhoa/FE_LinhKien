@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 
@@ -14,19 +14,18 @@ import { Router } from '@angular/router';
   selector: 'app-panel-menu',
   standalone: true,
   imports: [
-    CommonModule,
-
     ButtonModule,
+    CommonModule,
     NgFor,
     MenuModule,
     BadgeModule,
     RippleModule,
-    AvatarModule
+    AvatarModule,
   ],
   templateUrl: './panel-menu.component.html',
   styleUrl: './panel-menu.component.scss',
 })
-export class PanelMenuComponent {
+export class PanelMenuComponent implements OnInit {
   constructor(private router: Router) {}
 
   items: MenuItem[] | undefined;
@@ -34,7 +33,6 @@ export class PanelMenuComponent {
   handleRouter(url: any) {
     this.router.navigate([`${url}`]);
   }
-
   ngOnInit() {
     this.items = [
       {
@@ -52,7 +50,7 @@ export class PanelMenuComponent {
             label: 'Doanh thu',
             url: '/revenue',
             icon: 'pi pi-list',
-          }
+          },
         ],
       },
       {

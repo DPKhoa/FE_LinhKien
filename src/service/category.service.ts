@@ -1,16 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { env } from '../environments/env';
 // import { environment } from 'src/environments/environment';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class CatogoryService {
-    constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
+  mainApi = env.main_api;
+  private apiUrl = `${this.mainApi}categories/getAllCategory`;
+  private createApiUrl = `${this.mainApi}categories/createCategory`;
 
-    private apiUrl = 'https://0683-2001-ee0-50f5-5be0-59b-c29-ef46-3352.ngrok-free.app/categories/getAllCategory';
-
-    getAllCategory() {
-        return this.httpClient.get(this.apiUrl, {}) 
-    }
+  getAllCategory() {
+    return this.httpClient.get(this.apiUrl, {});
+  }
+  createCategory(data: any) {
+    return this.httpClient.post(this.createApiUrl, data);
+  }
 }

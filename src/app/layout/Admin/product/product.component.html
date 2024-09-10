@@ -1,5 +1,5 @@
 <div class="w-full flex flex-row h-screen gap-3">
-  <app-panel-menu></app-panel-menu>
+  <app-panel-menu> </app-panel-menu>
 
   <div class="flex flex-column w-full h-screen">
     <div
@@ -22,13 +22,10 @@
           shape="circle"
         />
       </div>
-
       <i class="pi pi-cog" style="font-size: 1.5rem"></i>
     </div>
-
-    <div class="w-full h-full flex flex-column align-items-start">
+    <div class="w-full h-full flex flex-column algin align-items-center">
       <p-breadcrumb class="w-full" [model]="items" [home]="home" />
-
       <div
         class="card flex flex-row w-full h-fit align-items-start justify-content-between py-3"
       >
@@ -58,7 +55,7 @@
             <p-inputGroupAddon>
               <i class="pi pi-search"></i>
             </p-inputGroupAddon>
-            <input pInputText placeholder="Tìm kiếm thương hiệu..." />
+            <input pInputText placeholder="Tìm kiếm sản phẩm..." />
           </p-inputGroup>
         </div>
       </div>
@@ -69,16 +66,19 @@
             <th>ID</th>
             <th>Name</th>
             <th>Image</th>
+            <th>Description</th>
+            <th>Cost</th>
             <th>Created at</th>
             <th>Updated at</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-product>
           <tr>
-            <td>{{ product.brandId }}</td>
+            <td>{{ product.productId }}</td>
             <td>{{ product.name }}</td>
             <td>{{ product.image }}</td>
-
+            <td>{{ product.description }}</td>
+            <td>{{ product.cost }}</td>
             <td>{{ product.createdAt }}</td>
             <td>{{ product.updatedAt }}</td>
           </tr>

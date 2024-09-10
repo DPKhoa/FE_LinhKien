@@ -2,7 +2,9 @@
   <app-panel-menu></app-panel-menu>
 
   <div class="flex flex-column w-full h-screen">
-    <div class="flex flex-row align-items-center justify-content-end w-full h-4rem gap-3">
+    <div
+      class="flex flex-row align-items-center justify-content-end w-full h-4rem gap-3"
+    >
       <div class="flex w-15rem h-2rem justify-content-center">
         <p-inputGroup>
           <p-inputGroupAddon>
@@ -13,8 +15,12 @@
       </div>
 
       <div class="flex w-2rem h-2rem">
-        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="w-full h-full"
-          size="xlarge" shape="circle" />
+        <p-avatar
+          image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+          styleClass="w-full h-full"
+          size="xlarge"
+          shape="circle"
+        />
       </div>
 
       <i class="pi pi-cog" style="font-size: 1.5rem"></i>
@@ -23,14 +29,29 @@
     <div class="w-full h-full flex flex-column align-items-start">
       <p-breadcrumb class="w-full" [model]="items" [home]="home" />
 
-      <div class="card flex flex-row w-full h-fit align-items-start justify-content-between py-3">
+      <div
+        class="card flex flex-row w-full h-fit align-items-start justify-content-between py-3"
+      >
         <div class="flex flex-row w-fit h-fit align-items-start gap-3">
-          <button pButton pRipple size="small" [disabled]="false" icon="pi pi-plus" label="Tạo mới"
-            class="p-button-success gap-2" (click)="popUp()">
-          </button>
-          <button pButton pRipple size="small" [disabled]="true" icon="pi pi-trash" label="Xóa"
-            class="p-button-danger gap-2">
-          </button>
+          <button
+            pButton
+            pRipple
+            size="small"
+            [disabled]="false"
+            icon="pi pi-plus"
+            label="Tạo mới"
+            class="p-button-success gap-2"
+            (click)="popUp()"
+          ></button>
+          <button
+            pButton
+            pRipple
+            size="small"
+            [disabled]="true"
+            icon="pi pi-trash"
+            label="Xóa"
+            class="p-button-danger gap-2"
+          ></button>
         </div>
 
         <div class="flex w-18rem h-2rem justify-content-center">
@@ -58,7 +79,7 @@
             <td>{{ category.categoryId }}</td>
             <td>{{ category.name }}</td>
             <td class="text-center" *ngIf="category.status === true">
-              <i class="pi pi-check-circle" style="color: green;"></i>
+              <i class="pi pi-check-circle" style="color: green"></i>
             </td>
             <td>{{ category.createdAt }}</td>
             <td>{{ category.updatedAt }}</td>
@@ -69,21 +90,29 @@
   </div>
 </div>
 
-
-
-
-<p-dialog header="Chỉnh sửa thương hiệu" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
-  <span class="p-text-secondary block mb-5">Update your information.</span>
+<p-dialog
+  header="Tạo thương hiệu"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '40rem' }"
+>
+  <span class="p-text-secondary block mb-5">Tạo thương hiệu.</span>
   <div class="flex align-items-center gap-3 mb-3">
-      <label for="username" class="font-semibold w-6rem">Username</label>
-      <input pInputText id="username" class="flex-auto" autocomplete="off" />
+    <label for="username" class="font-semibold w-8rem">Tên thương hiệu: </label>
+    <input
+      pInputText
+      id="username"
+      class="flex-auto"
+      autocomplete="off"
+      [(ngModel)]="categories.name"
+    />
   </div>
   <div class="flex align-items-center gap-3 mb-5">
-      <label for="email" class="font-semibold w-6rem">Email</label>
-      <input pInputText id="email" class="flex-auto" autocomplete="off" />
+    <label for="email" class="font-semibold w-8rem">Trạng thái: </label>
+    <p-inputSwitch [(ngModel)]="categories.status" />
   </div>
   <div class="flex justify-content-end gap-2">
-      <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
-      <p-button label="Save" (onClick)="visible = false" />
+    <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
+    <p-button label="Tạo" (onClick)="onCreateCategory()" severity="danger" />
   </div>
 </p-dialog>
